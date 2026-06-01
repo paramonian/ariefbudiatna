@@ -618,7 +618,7 @@ document.getElementById('f-moodboard').addEventListener('change', function() {
   list.textContent = files.length ? files.map(f => '✓ ' + f.name).join(' · ') : '';
 });
 
-function submitForm() {
+async function submitForm() {
   const required = ['f-name','f-company','f-role','f-phone','f-brief'];
   let valid = true;
   required.forEach(id => {
@@ -634,11 +634,67 @@ function submitForm() {
     alert('Please fill in all required fields marked with *');
     return;
   }
-  // In production: send to FormSpree, EmailJS, or your backend
-  // For now: show success screen
-  document.getElementById('formMain').classList.add('hidden');
-  document.getElementById('successScreen').classList.add('visible');
-  window.scrollTo(0,0);
+
+  // Collect checkbox/radio values
+  const formats = Array.from(document.querySelectorAll('input[name="format"]:checked')).map(i => i.value).join(', ');
+  const usage   = Array.from(document.querySelectorAll('input[name="usage"]:checked')).map(i => i.value).join(', ');
+  const projType    = (document.querySelector('input[name="proj-type"]:checked') || {}).value || '';
+  const budget      = (document.querySelector('input[name="budget"]:checked') || {}).value || '';
+  const budgetStatus = (document.querySelector('input[name="budget-status"]:checked') || {}).value || '';
+
+  const data = new FormData();
+  data.append('Name',             document.getElementById('f-name').value.trim());
+  data.append('Company / Brand',  document.getElementById('f-company').value.trim());
+  data.append('Role',             document.getElementById('f-role').value);
+  data.append('WhatsApp',         document.getElementById('f-phone').value.trim());
+  data.append('Email',            document.getElementById('f-email').value.trim());
+  data.append('Instagram / Web',  document.getElementById('f-social').value.trim());
+  data.append('Project Type',     projType);
+  data.append('Content Format',   formats);
+  data.append('Images Needed',    document.getElementById('f-images').value);
+  data.append('Reels Needed',     document.getElementById('f-reels').value);
+  data.append('Shoot Date',       document.getElementById('f-date').value.trim());
+  data.append('Location',         document.getElementById('f-location').value.trim());
+  data.append('Content Usage',    usage);
+  data.append('Project Brief',    document.getElementById('f-brief').value.trim());
+  data.append('Reference Links',  document.getElementById('f-refs').value.trim());
+  data.append('Style Notes',      document.getElementById('f-style').value.trim());
+  data.append('Budget Range',     budget);
+  data.append('Budget Status',    budgetStatus);
+
+  // Attach moodboard files if any
+  const moodboardFiles = document.getElementById('f-moodboard').files;
+  for (let i = 0; i < moodboardFiles.length; i++) {
+    data.append('Moodboard', moodboardFiles[i]);
+  }
+
+  const btn = document.querySelector('.btn-submit');
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch('https://formspree.io/f/mykvqdbj', {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (res.ok) {
+      document.getElementById('formMain').classList.add('hidden');
+      document.getElementById('successScreen').classList.add('visible');
+      window.scrollTo(0, 0);
+    } else {
+      const json = await res.json();
+      const msg = json.errors ? json.errors.map(e => e.message).join(', ') : 'Submission failed. Please try again.';
+      alert(msg);
+      btn.textContent = 'Submit Inquiry →';
+      btn.disabled = false;
+    }
+  } catch (err) {
+    alert('Network error. Please check your connection and try again.');
+    btn.textContent = 'Submit Inquiry →';
+    btn.disabled = false;
+  }
 }
 </script>
 </body>
