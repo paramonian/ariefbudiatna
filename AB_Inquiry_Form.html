@@ -502,18 +502,6 @@ select option { background: #111009; }
       <div class="section-num">04 — Visual Direction</div>
       <div class="section-title">Show us your visual reference</div>
 
-      <div class="field">
-        <label>Moodboard / Reference Images</label>
-        <div class="upload-zone">
-          <input type="file" id="f-moodboard" accept="image/*,.pdf" multiple>
-          <div class="upload-icon">↑</div>
-          <div class="upload-text">
-            <strong>Upload reference images or moodboard</strong>
-            JPG, PNG, PDF accepted · Multiple files allowed
-          </div>
-        </div>
-        <div id="file-list" style="margin-top:8px;font-size:11px;color:var(--mid);"></div>
-      </div>
 
       <div class="field">
         <label>Reference Links</label>
@@ -612,11 +600,6 @@ function selectBudget(el, val) {
   el.querySelector('input').checked = true;
 }
 
-document.getElementById('f-moodboard').addEventListener('change', function() {
-  const list = document.getElementById('file-list');
-  const files = Array.from(this.files);
-  list.textContent = files.length ? files.map(f => '✓ ' + f.name).join(' · ') : '';
-});
 
 async function submitForm() {
   const required = ['f-name','f-company','f-role','f-phone','f-brief'];
@@ -662,11 +645,6 @@ async function submitForm() {
   data.append('Budget Range',     budget);
   data.append('Budget Status',    budgetStatus);
 
-  // Attach moodboard files if any
-  const moodboardFiles = document.getElementById('f-moodboard').files;
-  for (let i = 0; i < moodboardFiles.length; i++) {
-    data.append('Moodboard', moodboardFiles[i]);
-  }
 
   const btn = document.querySelector('.btn-submit');
   btn.textContent = 'Sending…';
