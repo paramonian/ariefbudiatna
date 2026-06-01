@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monthly Retainer — Arief Budiatna</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --black: #0d0d0d; --mid: #4a4a4a; --ash: #7a7a7a;
+  --rule: #e0ddd8; --warm: #f7f5f2; --paper: #ffffff;
+  --accent: #2c5f2e; --accent2: #57a65a;
+}
+body { background: var(--paper); color: var(--black); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.6; -webkit-font-smoothing: antialiased; font-size: 13px; }
+.page { max-width: 820px; margin: 0 auto; background: var(--paper); }
+.accent-bar { height: 4px; background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+
+header { padding: 36px 48px 32px; display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid var(--rule); }
+.name { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600; color: var(--black); }
+.title { font-size: 11px; color: var(--ash); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 4px; }
+.contact { font-size: 12px; color: var(--mid); margin-top: 8px; line-height: 1.7; }
+.doc-block { text-align: right; }
+.doc-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ash); margin-bottom: 4px; }
+.doc-title { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--black); line-height: 1; }
+.doc-meta { font-size: 11px; color: var(--ash); margin-top: 6px; line-height: 1.8; }
+
+.for-block { padding: 24px 48px; background: var(--warm); border-bottom: 1px solid var(--rule); display: flex; gap: 48px; }
+.for-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ash); margin-bottom: 6px; }
+.for-value { font-size: 14px; color: var(--black); font-weight: 500; line-height: 1.5; }
+.for-sub { font-size: 12px; color: var(--mid); margin-top: 2px; }
+
+.section { padding: 32px 48px; border-bottom: 1px solid var(--rule); }
+.section-eyebrow { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+.section-title { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--black); margin-bottom: 20px; line-height: 1.2; }
+
+.packages { display: flex; flex-direction: column; gap: 2px; background: var(--rule); }
+.pkg { background: var(--paper); padding: 24px 28px; display: grid; grid-template-columns: 1fr 200px; gap: 24px; }
+.pkg.featured { background: var(--warm); }
+.pkg-tag { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+.pkg-name { font-family: 'Playfair Display', serif; font-size: 17px; color: var(--black); margin-bottom: 4px; }
+.pkg-desc { font-size: 12px; color: var(--mid); margin-bottom: 12px; line-height: 1.5; }
+.pkg-items { list-style: none; }
+.pkg-items li { font-size: 12px; color: var(--mid); padding: 4px 0; border-bottom: 1px solid var(--rule); display: flex; gap: 8px; line-height: 1.4; }
+.pkg-items li:last-child { border-bottom: none; }
+.pkg-items li::before { content: '—'; color: var(--accent2); flex-shrink: 0; font-size: 10px; }
+.pkg-right { text-align: right; }
+.pkg-price-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ash); margin-bottom: 4px; }
+.pkg-price { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; color: var(--black); line-height: 1; }
+.pkg-price-sub { font-size: 11px; color: var(--ash); margin-top: 4px; }
+.pkg-price-annual { font-size: 12px; color: var(--accent); font-weight: 500; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--rule); line-height: 1.5; }
+.pkg-badge { display: inline-block; margin-top: 8px; font-size: 10px; background: var(--accent); color: white; padding: 2px 8px; letter-spacing: 0.1em; text-transform: uppercase; }
+
+.addon-row { background: #1a1a1a; padding: 20px 28px; display: flex; justify-content: space-between; align-items: center; margin-top: 2px; }
+.addon-tag { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent2); margin-bottom: 4px; }
+.addon-title { font-size: 14px; font-weight: 500; color: #fff; margin-bottom: 4px; }
+.addon-desc { font-size: 11px; color: #888; line-height: 1.5; max-width: 420px; }
+.addon-right { text-align: right; flex-shrink: 0; padding-left: 24px; }
+.addon-price { font-family: 'Playfair Display', serif; font-size: 18px; color: #fff; }
+.addon-note { font-size: 11px; color: #666; margin-top: 4px; }
+
+/* COMPARISON TABLE */
+.compare-table { width: 100%; border-collapse: collapse; margin-top: 0; font-size: 12px; }
+.compare-table th { background: #1a1a1a; color: #fff; padding: 10px 14px; text-align: left; font-weight: 500; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; }
+.compare-table th:not(:first-child) { text-align: center; }
+.compare-table td { padding: 9px 14px; border-bottom: 1px solid var(--rule); color: var(--mid); }
+.compare-table td:not(:first-child) { text-align: center; color: var(--black); font-weight: 500; }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table tr:nth-child(even) td { background: var(--warm); }
+.check { color: var(--accent); }
+.dash { color: var(--rule); }
+
+.total-block { background: var(--warm); padding: 24px 48px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--rule); }
+.dp { font-size: 12px; color: var(--mid); line-height: 1.8; }
+.dp strong { color: var(--black); font-weight: 500; }
+.total-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ash); margin-bottom: 4px; text-align: right; }
+.total-amount { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 600; color: var(--black); line-height: 1; }
+.total-tax { font-size: 11px; color: var(--ash); margin-top: 4px; text-align: right; }
+
+.process-text { font-size: 12px; color: var(--mid); line-height: 1.9; margin-bottom: 28px; }
+.process-text strong { color: var(--black); font-weight: 500; }
+
+.terms-row { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.terms-title { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ash); margin-bottom: 14px; }
+.terms-list { list-style: none; }
+.terms-list li { font-size: 12px; color: var(--mid); padding: 7px 0; border-bottom: 1px solid var(--rule); line-height: 1.6; }
+.terms-list li:last-child { border-bottom: none; }
+.bank-row { display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid var(--rule); font-size: 12px; }
+.bank-row:last-child { border-bottom: none; }
+.bk { color: var(--ash); } .bv { color: var(--black); font-weight: 500; }
+
+footer { padding: 24px 48px; display: flex; justify-content: space-between; align-items: center; background: var(--warm); }
+.fn { font-family: 'Playfair Display', serif; font-size: 15px; color: var(--black); }
+.fc { font-size: 11px; color: var(--ash); margin-top: 3px; }
+.footer-right { font-size: 11px; color: var(--ash); text-align: right; line-height: 1.8; }
+
+@media print {
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  body { font-size: 13px; }
+  .page { max-width: 100%; }
+  .pkg, .section, .total-block, .addon-row, .compare-table { page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="accent-bar"></div>
+
+<header>
+  <div>
+    <div class="name">Arief Budiatna</div>
+    <div class="title">Photography &amp; Visual Production</div>
+    <div class="contact">+62 896 8866 8573<br>Jl. Gatot Subroto VI C No. 3, Denpasar - Bali</div>
+  </div>
+  <div class="doc-block">
+    <div class="doc-label">Document Type</div>
+    <div class="doc-title">Retainer</div>
+    <div class="doc-meta">No. <!-- EDIT -->001/AB/V/2026<br>Date: <!-- EDIT -->May 26, 2026<br>Min. commitment: 3 months</div>
+  </div>
+</header>
+
+<div class="for-block">
+  <div>
+    <div class="for-label">Prepared For</div>
+    <div class="for-value"><!-- EDIT -->[Client Name]</div>
+    <div class="for-sub"><!-- EDIT -->[Role] · [Restaurant / Cafe / Bar]</div>
+  </div>
+  <div>
+    <div class="for-label">Service Type</div>
+    <div class="for-value">Monthly Content Retainer</div>
+    <div class="for-sub">Ongoing visual production</div>
+  </div>
+  <div>
+    <div class="for-label">Start Date</div>
+    <div class="for-value">TBC</div>
+    <div class="for-sub">Confirmed upon first payment</div>
+  </div>
+</div>
+
+<!-- PLANS -->
+<div class="section">
+  <div class="section-eyebrow">Monthly Investment</div>
+  <div class="section-title">Choose your monthly plan</div>
+
+  <div class="packages">
+    <div class="pkg">
+      <div>
+        <div class="pkg-tag">Plan 01 — Essential</div>
+        <div class="pkg-name">Content Essentials</div>
+        <div class="pkg-desc">For cafes and restaurants that need steady, consistent social media content every month.</div>
+        <ul class="pkg-items">
+          <li>2 shoot sessions per month</li>
+          <li>20 final images per session — 40 images/month</li>
+          <li>1 reel per session — 2 reels/month</li>
+          <li>Full color grade &amp; retouching</li>
+          <li>Social media license included</li>
+          <li>Equipment &amp; transport included</li>
+        </ul>
+      </div>
+      <div class="pkg-right">
+        <div class="pkg-price-label">Per Month</div>
+        <div class="pkg-price">IDR 6.000.000</div>
+        <div class="pkg-price-sub">Min. 3 months</div>
+        <div class="pkg-price-annual">IDR 5.500.000/mo<br><span style="font-size:11px;color:var(--ash)">6 months upfront</span></div>
+      </div>
+    </div>
+
+    <div class="pkg featured">
+      <div>
+        <div class="pkg-tag">Plan 02 — Growth</div>
+        <div class="pkg-name">Brand Content Engine</div>
+        <div class="pkg-desc">For established restaurants and bars that need high-volume, consistent content across all platforms.</div>
+        <ul class="pkg-items">
+          <li>3 shoot sessions per month</li>
+          <li>20 final images per session — 60 images/month</li>
+          <li>1 reel per session — 3 reels/month</li>
+          <li>Lifestyle &amp; ambience shots included</li>
+          <li>Social media license included</li>
+          <li>Priority scheduling — dates locked first</li>
+          <li>Equipment, lighting &amp; transport included</li>
+        </ul>
+      </div>
+      <div class="pkg-right">
+        <div class="pkg-price-label">Per Month</div>
+        <div class="pkg-price">IDR 12.000.000</div>
+        <div class="pkg-price-sub">Min. 3 months</div>
+        <div class="pkg-price-annual">IDR 10.500.000/mo<br><span style="font-size:11px;color:var(--ash)">6 months upfront</span></div>
+        <div class="pkg-badge">Most Popular</div>
+      </div>
+    </div>
+
+    <div class="pkg">
+      <div>
+        <div class="pkg-tag">Plan 03 — Full Service</div>
+        <div class="pkg-name">Visual Director Retainer</div>
+        <div class="pkg-desc">For multi-outlet F&amp;B brands running active advertising. Full creative ownership every month.</div>
+        <ul class="pkg-items">
+          <li>4 shoot sessions per month</li>
+          <li>25 final images per session — 100 images/month</li>
+          <li>2 reels per session — 8 reels/month</li>
+          <li>Food, lifestyle, ambience &amp; event coverage</li>
+          <li>Social media + digital advertising license</li>
+          <li>Monthly creative direction &amp; brand review</li>
+          <li>Priority scheduling · Dedicated WhatsApp</li>
+        </ul>
+      </div>
+      <div class="pkg-right">
+        <div class="pkg-price-label">Per Month</div>
+        <div class="pkg-price">IDR 25.000.000</div>
+        <div class="pkg-price-sub">Min. 3 months</div>
+        <div class="pkg-price-annual">IDR 22.000.000/mo<br><span style="font-size:11px;color:var(--ash)">6 months upfront</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="addon-row">
+    <div>
+      <div class="addon-tag">Add-On — Billboard &amp; Print</div>
+      <div class="addon-title">Commercial Usage Upgrade</div>
+      <div class="addon-desc">Billboard, outdoor advertising, and print usage available as a monthly add-on to any plan.</div>
+    </div>
+    <div class="addon-right">
+      <div class="addon-price">+ IDR 5.000.000</div>
+      <div class="addon-note">per month</div>
+    </div>
+  </div>
+
+  <div class="addon-row" style="margin-top:2px;">
+    <div>
+      <div class="addon-tag">Add-On — Extra Video</div>
+      <div class="addon-title">Additional Reels</div>
+      <div class="addon-desc">Extra reels beyond your plan at a flat rate per finished video.</div>
+    </div>
+    <div class="addon-right">
+      <div class="addon-price">+ IDR 3.500.000</div>
+      <div class="addon-note">per reel (30–60 sec)</div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPARISON -->
+<div class="section">
+  <div class="section-eyebrow">At a Glance</div>
+  <div class="section-title">Plan comparison</div>
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>What you get</th>
+        <th>Essential · 6M</th>
+        <th>Growth · 12M</th>
+        <th>Full Service · 25M</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Sessions / month</td><td>2</td><td>3</td><td>4</td></tr>
+      <tr><td>Images / month</td><td>40</td><td>60</td><td>100</td></tr>
+      <tr><td>Reels / month</td><td>2</td><td>3</td><td>8</td></tr>
+      <tr><td>Lifestyle &amp; ambience shots</td><td><span class="dash">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td>Priority scheduling</td><td><span class="dash">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td>Digital advertising license</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td>Monthly creative direction</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td>Dedicated WhatsApp</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="check">✓</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- TOTAL -->
+<div class="total-block">
+  <div>
+    <div class="dp">
+      First month payment confirms start date and locks shoot schedule<br>
+      Billed monthly · Min. 3-month commitment<br>
+      <strong><!-- EDIT -->[Selected Plan]</strong> · <!-- EDIT -->[IDR Amount] / month
+    </div>
+  </div>
+  <div>
+    <div class="total-label">Monthly Investment</div>
+    <div class="total-amount"><!-- EDIT -->IDR [X]</div>
+    <div class="total-tax">PPh 23 (2.5%) deducted by client if applicable</div>
+  </div>
+</div>
+
+<!-- TERMS -->
+<div class="section">
+  <div class="section-eyebrow">Terms &amp; Payment</div>
+  <div class="section-title">How to move forward</div>
+
+  <div class="process-text">
+    <strong>01 Choose Plan</strong> — Select the plan that fits your needs.<br>
+    <strong>02 First Payment</strong> — Confirms start date and locks your monthly shoot schedule.<br>
+    <strong>03 Monthly Brief</strong> — Shot list and focus areas aligned before every session.<br>
+    <strong>04 Shoot &amp; Deliver</strong> — Files delivered ready to publish within agreed turnaround.
+  </div>
+
+  <div class="terms-row">
+    <div>
+      <div class="terms-title">Retainer Terms</div>
+      <ul class="terms-list">
+        <li>Minimum 3-month commitment. Month-to-month after that.</li>
+        <li>First month payment required to confirm start date.</li>
+        <li>Monthly payment due on the 1st of each month.</li>
+        <li>30 days written notice to end retainer after minimum period.</li>
+        <li>Unused sessions do not roll over to the following month.</li>
+      </ul>
+    </div>
+    <div>
+      <div class="terms-title">Bank Transfer</div>
+      <div class="bank-row"><span class="bk">Bank</span><span class="bv">BCA</span></div>
+      <div class="bank-row"><span class="bk">Account No.</span><span class="bv">6130151190</span></div>
+      <div class="bank-row"><span class="bk">Account Name</span><span class="bv">Arief Budiatna Putra S.</span></div>
+      <div class="bank-row"><span class="bk">Reference</span><span class="bv"><!-- EDIT -->[Client] Retainer [Month]</span></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div>
+    <div class="fn">Arief Budiatna</div>
+    <div class="fc">+62 896 8866 8573 · Denpasar, Bali · behance.net/ariefbudiatna</div>
+  </div>
+  <div class="footer-right">Thank you for your trust<br><!-- EDIT -->May 2026</div>
+</footer>
+<div class="accent-bar"></div>
+</div>
+</body>
+</html>

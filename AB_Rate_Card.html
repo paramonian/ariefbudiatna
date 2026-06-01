@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rates — Arief Budiatna</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,600;1,300&family=Syne:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0908;
+  --surface: #111009;
+  --card: #141210;
+  --border: #2a2620;
+  --amber: #c17f3e;
+  --amber-dim: rgba(193,127,62,0.08);
+  --text: #e8e2d8;
+  --mid: #8a8070;
+  --dim: #3a3428;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Syne', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.top-bar { height: 3px; background: linear-gradient(90deg, #8B4513, var(--amber), #8B4513); }
+
+/* HERO */
+.hero {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 56px 40px 48px;
+  border-bottom: 1px solid var(--border);
+}
+.hero-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 40px;
+}
+.brand-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--text);
+}
+.brand-sub {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-top: 4px;
+}
+.brand-contact {
+  font-size: 11px;
+  color: var(--mid);
+  margin-top: 8px;
+  line-height: 1.7;
+}
+.brand-contact a { color: var(--amber); text-decoration: none; }
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.05;
+  margin-bottom: 16px;
+}
+.hero-title em { font-style: italic; color: var(--amber); }
+.hero-desc { font-size: 13px; color: var(--mid); line-height: 1.85; max-width: 500px; }
+
+/* SECTION */
+.section {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 48px 40px;
+  border-bottom: 1px solid var(--border);
+}
+.section-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 6px;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--text);
+  margin-bottom: 28px;
+  line-height: 1.2;
+}
+
+/* PACKAGES */
+.pkg-stack { display: flex; flex-direction: column; gap: 2px; background: var(--border); }
+.pkg {
+  background: var(--card);
+  padding: 28px 32px;
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  gap: 24px;
+  align-items: start;
+  transition: background 0.2s;
+}
+.pkg:hover { background: #181512; }
+.pkg.featured { background: #161208; }
+.pkg-tag {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 8px;
+}
+.pkg-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.pkg-desc { font-size: 12px; color: var(--mid); margin-bottom: 16px; line-height: 1.6; }
+.pkg-items { list-style: none; }
+.pkg-items li {
+  font-size: 12px;
+  color: var(--mid);
+  padding: 5px 0;
+  border-bottom: 1px solid var(--dim);
+  display: flex;
+  gap: 10px;
+  line-height: 1.4;
+}
+.pkg-items li:last-child { border-bottom: none; }
+.pkg-items li::before { content: '—'; color: var(--amber); flex-shrink: 0; font-size: 10px; }
+.pkg-right { text-align: right; }
+.pkg-price-label {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 6px;
+}
+.pkg-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 500;
+  color: var(--amber);
+  line-height: 1;
+}
+.pkg-price-note { font-size: 11px; color: var(--mid); margin-top: 6px; line-height: 1.6; }
+.pkg-badge {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 9px;
+  background: var(--amber);
+  color: #0a0908;
+  padding: 3px 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ADDON */
+.addon-bar {
+  background: #0f0d0a;
+  border: 1px solid var(--border);
+  border-top: none;
+  padding: 18px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.addon-label { font-size: 11px; color: var(--mid); }
+.addon-label strong { color: var(--text); display: block; font-size: 13px; margin-bottom: 2px; }
+.addon-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  color: var(--amber);
+}
+
+/* RETAINER TABLE */
+.retainer-stack { display: flex; flex-direction: column; gap: 2px; background: var(--border); }
+
+/* COMPARE */
+.compare { width: 100%; border-collapse: collapse; margin-top: 28px; font-size: 12px; }
+.compare th {
+  background: var(--surface);
+  color: var(--text);
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border);
+}
+.compare th:not(:first-child) { text-align: center; }
+.compare td {
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--dim);
+  color: var(--mid);
+}
+.compare td:not(:first-child) { text-align: center; color: var(--text); font-weight: 500; }
+.compare tr:last-child td { border-bottom: none; }
+.check { color: #6dba87; }
+.dash { color: var(--dim); }
+
+/* HOW IT WORKS */
+.steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; background: var(--border); }
+.step { background: var(--card); padding: 24px 20px; }
+.step-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--dim);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.step-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.step-desc { font-size: 11px; color: var(--mid); line-height: 1.65; }
+.step-flag {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 9px;
+  background: var(--amber);
+  color: #0a0908;
+  padding: 2px 8px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* CTA */
+.cta-section {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 56px 40px;
+  text-align: center;
+}
+.cta-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--text);
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+.cta-title em { font-style: italic; color: var(--amber); }
+.cta-desc { font-size: 13px; color: var(--mid); margin-bottom: 32px; line-height: 1.8; }
+.cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--amber);
+  color: #0a0908;
+  border: none;
+  padding: 14px 32px;
+  font-family: 'Syne', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: opacity 0.2s;
+}
+.btn-primary:hover { opacity: 0.85; }
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--mid);
+  padding: 14px 32px;
+  font-family: 'Syne', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s;
+}
+.btn-ghost:hover { border-color: var(--amber); color: var(--text); }
+
+/* FOOTER */
+.footer {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 28px 40px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  color: var(--mid);
+}
+.footer a { color: var(--amber); text-decoration: none; }
+
+@media (max-width: 600px) {
+  .hero, .section, .cta-section, .footer { padding-left: 20px; padding-right: 20px; }
+  .hero-title { font-size: 32px; }
+  .pkg { grid-template-columns: 1fr; }
+  .pkg-right { text-align: left; }
+  .steps { grid-template-columns: 1fr 1fr; }
+  .hero-top { flex-direction: column; gap: 16px; }
+}
+</style>
+</head>
+<body>
+<div class="top-bar"></div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-top">
+    <div>
+      <div class="brand-name">Arief Budiatna</div>
+      <div class="brand-sub">Photography &amp; Visual Production · Bali</div>
+      <div class="brand-contact">
+        +62 896 8866 8573<br>
+        <a href="https://behance.net/ariefbudiatna" target="_blank">behance.net/ariefbudiatna</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-title">Production<br><em>Rates</em></div>
+  <div class="hero-desc">
+    Transparent pricing for photography and visual production — one-off projects and monthly retainers for hospitality, F&amp;B, and lifestyle brands in Bali and beyond.
+  </div>
+</div>
+
+<!-- ONE-OFF PACKAGES -->
+<div class="section">
+  <div class="section-eyebrow">One-Off Projects</div>
+  <div class="section-title">Single production sessions</div>
+
+  <div class="pkg-stack">
+    <div class="pkg">
+      <div>
+        <div class="pkg-tag">Package 01 — Starter</div>
+        <div class="pkg-name">Social Media Essentials</div>
+        <div class="pkg-desc">Half day shoot. For cafes, restaurants, and brands that need fresh social media content without a large production budget.</div>
+        <ul class="pkg-items">
+          <li>Half day on location — up to 4 hours</li>
+          <li>15 final images — color graded &amp; retouched</li>
+          <li>1 reel (30–60 sec, edited)</li>
+          <li>Social media license — Instagram, TikTok, website</li>
+          <li>Equipment &amp; transport included</li>
+        </ul>
+      </div>
+      <div class="pkg-right">
+        <div class="pkg-price-label">Investment</div>
+        <div class="pkg-price">IDR 6.000.000</div>
+        <div class="pkg-price-note">Social media use only</div>
+      </div>
+    </div>
+
+    <div class="pkg featured">
+      <div>
+        <div class="pkg-tag">Package 02 — Brand Content</div>
+        <div class="pkg-name">Full Day Brand Production</div>
+        <div class="pkg-desc">Full day shoot. For established restaurants and bars that want high-volume, brand-consistent content across all platforms.</div>
+        <ul class="pkg-items">
+          <li>Full day on location — 6 to 8 hours</li>
+          <li>25 final images — full color grade &amp; retouching</li>
+          <li>2 reels (30–60 sec each, edited)</li>
+          <li>Multiple menu items or brand categories</li>
+          <li>Social media license included</li>
+          <li>Equipment, lighting &amp; transport included</li>
+        </ul>
+      </div>
+      <div class="pkg-right">
+        <div class="pkg-price-label">Investment</div>
+        <div class="pkg-price">IDR 12.000.000</div>
+        <div class="pkg-price-note">Social media use only</div>
+        <div class="pkg-badge">Most Popular</div>
+      </div>
+    </div>
+
+    <div class="pkg">
+      <div>
+        <div class="pkg-tag">Package 03 — Commercial</div>
+        <div class="pkg-name">Campaign Production</div>
+        <div class="pkg-desc">Full day with commercial usage rights. For brands running billboard, print, or multi-platform advertising campaigns.</div>
+        <ul class="pkg-items">
+          <li>Full day on location — 6 to 8 hours</li>
+          <li>25 final images — billboard-ready export</li>
+          <li>2 reels (30–60 sec each, edited)</li>
+          <li>Billboard hero compositions</li>
+          <li>1 year commercial license — billboard, print, digital, social</li>
+          <li>Equipment, lighting, transport &amp; creative direction</li>
+        </ul>
+      </div>
+      <div class="pkg-right">
+        <div class="pkg-price-label">Investment</div>
+        <div class="pkg-price">IDR 25.000.000</div>
+        <div class="pkg-price-note">Full commercial use<br>Billboard · Print · Digital · Social</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="addon-bar">
+    <div class="addon-label">
+      <strong>Additional Reels</strong>
+      Extra video content beyond the base package
+    </div>
+    <div class="addon-price">+ IDR 3.500.000 / reel</div>
+  </div>
+</div>
+
+<!-- RETAINER -->
+<div class="section">
+  <div class="section-eyebrow">Monthly Retainer</div>
+  <div class="section-title">Ongoing production for F&amp;B &amp; hospitality brands</div>
+
+  <div class="retainer-stack">
+    <div class="pkg">
+      <div>
+        <div class="pkg-tag">Plan 01 — Essential</div>
+        <div class="pkg-name">Content Essentials</div>
+        <div class="pkg-desc">For cafes and small restaurants that need consistent social media content every month.</div>
+        <ul class="pkg-items">
+          <li>2 shoot sessions per month</li>
+          <li>20 images per session — 40 images / month</li>
+          <li>1 reel per session — 2 reels / month</li>
+          <li>Full color grade &amp; retouching</li>
+          <li>Social media license included</li>
+        </ul>
+      </div>
+      <div class="pkg-right">
+        <div class="pkg-price-label">Per Month</div>
+        <div class="pkg-price">IDR 6.000.000</div>
+        <div class="pkg-price-note">Min. 3-month commitment<br>IDR 5.500.000/mo if 6 months upfront</div>
+      </div>
+    </div>
+
+    <div class="pkg featured">
+      <div>
+        <div class="pkg-tag">Plan 02 — Growth</div>
+        <div class="pkg-name">Brand Content Engine</div>
+        <div class="pkg-desc">For established restaurants and bars needing high-volume, consistent content every month.</div>
+        <ul class="pkg-items">
+          <li>3 shoot sessions per month</li>
+          <li>20 images per session — 60 images / month</li>
+          <li>1 reel per session — 3 reels / month</li>
+          <li>Lifestyle &amp; ambience shots included</li>
+          <li>Priority scheduling</li>
+          <li>Social media license included</li>
+        </ul>
+      </div>
+      <div class="pkg-right">
+        <div class="pkg-price-label">Per Month</div>
+        <div class="pkg-price">IDR 12.000.000</div>
+        <div class="pkg-price-note">Min. 3-month commitment<br>IDR 10.500.000/mo if 6 months upfront</div>
+        <div class="pkg-badge">Most Popular</div>
+      </div>
+    </div>
+
+    <div class="pkg">
+      <div>
+        <div class="pkg-tag">Plan 03 — Full Service</div>
+        <div class="pkg-name">Visual Director Retainer</div>
+        <div class="pkg-desc">For multi-outlet F&amp;B brands and hotels running active advertising. Full creative ownership every month.</div>
+        <ul class="pkg-items">
+          <li>4 shoot sessions per month</li>
+          <li>25 images per session — 100 images / month</li>
+          <li>2 reels per session — 8 reels / month</li>
+          <li>Food, lifestyle, ambience &amp; event coverage</li>
+          <li>Monthly creative direction &amp; brand review</li>
+          <li>Digital advertising license included</li>
+          <li>Priority scheduling · Dedicated WhatsApp</li>
+        </ul>
+      </div>
+      <div class="pkg-right">
+        <div class="pkg-price-label">Per Month</div>
+        <div class="pkg-price">IDR 25.000.000</div>
+        <div class="pkg-price-note">Min. 3-month commitment<br>IDR 22.000.000/mo if 6 months upfront</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="addon-bar">
+    <div class="addon-label">
+      <strong>Billboard &amp; Print Add-On</strong>
+      Commercial outdoor and print usage license
+    </div>
+    <div class="addon-price">+ IDR 5.000.000 / month</div>
+  </div>
+
+  <table class="compare">
+    <thead>
+      <tr>
+        <th>What you get</th>
+        <th>Essential · 6M</th>
+        <th>Growth · 12M</th>
+        <th>Full Service · 25M</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Sessions / month</td><td>2</td><td>3</td><td>4</td></tr>
+      <tr><td>Images / month</td><td>40</td><td>60</td><td>100</td></tr>
+      <tr><td>Reels / month</td><td>2</td><td>3</td><td>8</td></tr>
+      <tr><td>Lifestyle &amp; ambience shots</td><td><span class="dash">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td>Priority scheduling</td><td><span class="dash">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td>Digital advertising license</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td>Monthly creative direction</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="check">✓</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="section">
+  <div class="section-eyebrow">Process</div>
+  <div class="section-title">How it works</div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-title">Brief &amp; Quote</div>
+      <div class="step-desc">Submit your project details. We review and send a tailored proposal within 1–2 business days.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-title">Down Payment</div>
+      <div class="step-desc">50% down payment confirms your shoot date and initiates production.</div>
+      <span class="step-flag">Locks your date</span>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-title">Brainstorm</div>
+      <div class="step-desc">Creative direction and shot list session scheduled after down payment is received.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-title">Shoot &amp; Deliver</div>
+      <div class="step-desc">Production day on location. Final delivery after remaining 50% upon preview approval.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <div class="cta-title">Ready to start<br>your <em>project?</em></div>
+  <div class="cta-desc">
+    For agencies and marketing teams — fill in the inquiry form and we will prepare a tailored quote.<br>
+    For direct questions — reach us on WhatsApp.
+  </div>
+  <div class="cta-buttons">
+    <a href="AB_Inquiry_Form.html" class="btn-primary">Submit Inquiry →</a>
+    <a href="https://wa.me/6289688668573" target="_blank" class="btn-ghost">WhatsApp Us</a>
+  </div>
+</div>
+
+<div class="footer">
+  <div>Arief Budiatna · +62 896 8866 8573 · Denpasar, Bali</div>
+  <a href="https://behance.net/ariefbudiatna" target="_blank">behance.net/ariefbudiatna</a>
+</div>
+
+</body>
+</html>

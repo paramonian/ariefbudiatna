@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Production Proposal — Arief Budiatna</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --black: #0d0d0d; --mid: #4a4a4a; --ash: #7a7a7a;
+  --rule: #e0ddd8; --warm: #f7f5f2; --paper: #ffffff;
+  --accent: #8B4513; --accent2: #c17f3e;
+}
+body { background: var(--paper); color: var(--black); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.6; -webkit-font-smoothing: antialiased; font-size: 13px; }
+.page { max-width: 820px; margin: 0 auto; background: var(--paper); }
+.accent-bar { height: 4px; background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+
+/* HEADER */
+header { padding: 36px 48px 32px; display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid var(--rule); }
+.name { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600; color: var(--black); }
+.title { font-size: 11px; color: var(--ash); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 4px; }
+.contact { font-size: 12px; color: var(--mid); margin-top: 8px; line-height: 1.7; }
+.doc-block { text-align: right; }
+.doc-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ash); margin-bottom: 4px; }
+.doc-title { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--black); line-height: 1; }
+.doc-meta { font-size: 11px; color: var(--ash); margin-top: 6px; line-height: 1.8; }
+
+/* FOR BLOCK */
+.for-block { padding: 24px 48px; background: var(--warm); border-bottom: 1px solid var(--rule); display: flex; gap: 48px; }
+.for-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ash); margin-bottom: 6px; }
+.for-value { font-size: 14px; color: var(--black); font-weight: 500; line-height: 1.5; }
+.for-sub { font-size: 12px; color: var(--mid); margin-top: 2px; }
+
+/* SECTION */
+.section { padding: 32px 48px; border-bottom: 1px solid var(--rule); }
+.section-eyebrow { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+.section-title { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--black); margin-bottom: 20px; line-height: 1.2; }
+
+/* WHAT'S INCLUDED */
+.included-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; background: var(--rule); margin-bottom: 24px; }
+.inc-card { background: var(--paper); padding: 16px; }
+.inc-num { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--rule); line-height: 1; margin-bottom: 8px; }
+.inc-title { font-size: 11px; font-weight: 500; color: var(--black); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+.inc-text { font-size: 11px; color: var(--mid); line-height: 1.65; }
+
+/* PACKAGES */
+.packages { display: flex; flex-direction: column; gap: 2px; background: var(--rule); }
+.pkg { background: var(--paper); padding: 24px 28px; display: grid; grid-template-columns: 1fr 180px; gap: 24px; }
+.pkg.featured { background: var(--warm); }
+.pkg-tag { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+.pkg-name { font-family: 'Playfair Display', serif; font-size: 17px; color: var(--black); margin-bottom: 4px; }
+.pkg-desc { font-size: 12px; color: var(--mid); margin-bottom: 12px; line-height: 1.5; }
+.pkg-items { list-style: none; }
+.pkg-items li { font-size: 12px; color: var(--mid); padding: 4px 0; border-bottom: 1px solid var(--rule); display: flex; gap: 8px; line-height: 1.4; }
+.pkg-items li:last-child { border-bottom: none; }
+.pkg-items li::before { content: '—'; color: var(--accent2); flex-shrink: 0; font-size: 10px; }
+.pkg-right { text-align: right; }
+.pkg-price-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ash); margin-bottom: 4px; }
+.pkg-price { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; color: var(--black); line-height: 1; }
+.pkg-price-note { font-size: 11px; color: var(--ash); margin-top: 6px; line-height: 1.6; }
+.pkg-badge { display: inline-block; margin-top: 8px; font-size: 10px; background: var(--accent); color: white; padding: 2px 8px; letter-spacing: 0.1em; text-transform: uppercase; }
+
+/* VIDEO ADD-ON */
+.video-addon { background: #1a1a1a; padding: 20px 28px; display: flex; justify-content: space-between; align-items: center; margin-top: 2px; }
+.addon-tag { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent2); margin-bottom: 4px; }
+.addon-title { font-size: 14px; font-weight: 500; color: #fff; margin-bottom: 4px; }
+.addon-desc { font-size: 11px; color: #888; line-height: 1.5; max-width: 460px; }
+.addon-right { text-align: right; flex-shrink: 0; padding-left: 24px; }
+.addon-price { font-family: 'Playfair Display', serif; font-size: 18px; color: #fff; }
+.addon-note { font-size: 11px; color: #666; margin-top: 4px; }
+
+/* CUSTOM NOTE */
+.custom-note { background: #fffaf5; border-left: 3px solid var(--accent2); padding: 14px 18px; margin-top: 2px; font-size: 12px; color: var(--mid); line-height: 1.7; }
+.custom-note strong { color: var(--black); font-weight: 500; display: block; margin-bottom: 4px; font-size: 13px; }
+
+/* TOTAL */
+.total-block { background: var(--warm); padding: 24px 48px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--rule); }
+.dp { font-size: 12px; color: var(--mid); line-height: 1.8; }
+.dp strong { color: var(--black); font-weight: 500; }
+.total-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ash); margin-bottom: 4px; text-align: right; }
+.total-amount { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 600; color: var(--black); line-height: 1; }
+.total-tax { font-size: 11px; color: var(--ash); margin-top: 4px; text-align: right; }
+
+/* PROCESS */
+.process-text { font-size: 12px; color: var(--mid); line-height: 1.9; }
+.process-text strong { color: var(--black); font-weight: 500; }
+
+/* TERMS */
+.terms-row { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.terms-title { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ash); margin-bottom: 14px; }
+.terms-list { list-style: none; }
+.terms-list li { font-size: 12px; color: var(--mid); padding: 7px 0; border-bottom: 1px solid var(--rule); line-height: 1.6; }
+.terms-list li:last-child { border-bottom: none; }
+.bank-row { display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid var(--rule); font-size: 12px; }
+.bank-row:last-child { border-bottom: none; }
+.bk { color: var(--ash); } .bv { color: var(--black); font-weight: 500; }
+
+/* FOOTER */
+footer { padding: 24px 48px; display: flex; justify-content: space-between; align-items: center; background: var(--warm); }
+.fn { font-family: 'Playfair Display', serif; font-size: 15px; color: var(--black); }
+.fc { font-size: 11px; color: var(--ash); margin-top: 3px; }
+.footer-right { font-size: 11px; color: var(--ash); text-align: right; line-height: 1.8; }
+
+/* PRINT */
+@media print {
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  body { font-size: 13px; }
+  .page { max-width: 100%; }
+  .pkg, .section, .total-block, .video-addon, .custom-note { page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="accent-bar"></div>
+
+<!-- HEADER -->
+<header>
+  <div>
+    <div class="name">Arief Budiatna</div>
+    <div class="title">Photography &amp; Visual Production</div>
+    <div class="contact">+62 896 8866 8573<br>Jl. Gatot Subroto VI C No. 3, Denpasar - Bali</div>
+  </div>
+  <div class="doc-block">
+    <div class="doc-label">Document Type</div>
+    <div class="doc-title">Proposal</div>
+    <div class="doc-meta">No. <!-- EDIT -->001/AB/V/2026<br>Date: <!-- EDIT -->May 26, 2026<br>Valid: 14 days</div>
+  </div>
+</header>
+
+<!-- FOR BLOCK -->
+<div class="for-block">
+  <div>
+    <div class="for-label">Prepared For</div>
+    <div class="for-value"><!-- EDIT -->[Client Name]</div>
+    <div class="for-sub"><!-- EDIT -->[Role] · [Company]</div>
+  </div>
+  <div>
+    <div class="for-label">Project</div>
+    <div class="for-value"><!-- EDIT -->[Project Name]</div>
+    <div class="for-sub"><!-- EDIT -->[e.g. Billboard / Brand Content / Social Media]</div>
+  </div>
+  <div>
+    <div class="for-label">Shoot Date</div>
+    <div class="for-value">TBC</div>
+    <div class="for-sub">Confirmed upon down payment</div>
+  </div>
+</div>
+
+<!-- WHAT'S INCLUDED -->
+<div class="section">
+  <div class="section-eyebrow">Every Package Includes</div>
+  <div class="section-title">What you get in every production session</div>
+  <div class="included-grid">
+    <div class="inc-card">
+      <div class="inc-num">01</div>
+      <div class="inc-title">Pre-Production</div>
+      <div class="inc-text">Shot list and brief alignment. Scheduled after down payment. Keeps shoot day focused.</div>
+    </div>
+    <div class="inc-card">
+      <div class="inc-num">02</div>
+      <div class="inc-title">On Location</div>
+      <div class="inc-text">Profoto lighting, equipment, transport. Creative direction throughout the session.</div>
+    </div>
+    <div class="inc-card">
+      <div class="inc-num">03</div>
+      <div class="inc-title">Post-Production</div>
+      <div class="inc-text">Full color grade in Capture One, retouching, export ready to publish.</div>
+    </div>
+    <div class="inc-card">
+      <div class="inc-num">04</div>
+      <div class="inc-title">Usage License</div>
+      <div class="inc-text">Social media license in all packages. Billboard license available in Package 03.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PACKAGES -->
+<div class="section">
+  <div class="section-eyebrow">Investment</div>
+  <div class="section-title">Choose your package</div>
+
+  <div class="packages">
+    <div class="pkg">
+      <div>
+        <div class="pkg-tag">Package 01 — Starter</div>
+        <div class="pkg-name">Social Media Essentials</div>
+        <div class="pkg-desc">Half day. Everything you need to keep your social media active and on-brand.</div>
+        <ul class="pkg-items">
+          <li>Half day on location — up to 4 hours</li>
+          <li>15 final images — color graded &amp; retouched</li>
+          <li>1 reel (30–60 sec, edited)</li>
+          <li>Social media license — Instagram, TikTok, web</li>
+          <li>Equipment &amp; transport included</li>
+        </ul>
+      </div>
+      <div class="pkg-right">
+        <div class="pkg-price-label">Investment</div>
+        <div class="pkg-price">IDR 6.000.000</div>
+        <div class="pkg-price-note">Social media use only</div>
+      </div>
+    </div>
+
+    <div class="pkg featured">
+      <div>
+        <div class="pkg-tag">Package 02 — Brand Content</div>
+        <div class="pkg-name">Full Day Brand Production</div>
+        <div class="pkg-desc">Full day. More content, more formats, more reach across all platforms.</div>
+        <ul class="pkg-items">
+          <li>Full day on location — 6 to 8 hours</li>
+          <li>25 final images — full color grade &amp; retouching</li>
+          <li>2 reels (30–60 sec each, edited)</li>
+          <li>Multiple menu items or brand categories</li>
+          <li>Social media license included</li>
+          <li>Equipment, lighting &amp; transport included</li>
+        </ul>
+      </div>
+      <div class="pkg-right">
+        <div class="pkg-price-label">Investment</div>
+        <div class="pkg-price">IDR 12.000.000</div>
+        <div class="pkg-price-note">Social media use only</div>
+        <div class="pkg-badge">Most Popular</div>
+      </div>
+    </div>
+
+    <div class="pkg">
+      <div>
+        <div class="pkg-tag">Package 03 — Commercial</div>
+        <div class="pkg-name">Campaign Production</div>
+        <div class="pkg-desc">Full day with commercial usage rights. For brands running billboard, print, or advertising campaigns.</div>
+        <ul class="pkg-items">
+          <li>Full day on location — 6 to 8 hours</li>
+          <li>25 final images — billboard-ready export</li>
+          <li>2 reels (30–60 sec each, edited)</li>
+          <li>Billboard hero compositions included</li>
+          <li>1 year commercial license — billboard, print, digital, social</li>
+          <li>Equipment, lighting, transport &amp; creative direction</li>
+        </ul>
+      </div>
+      <div class="pkg-right">
+        <div class="pkg-price-label">Investment</div>
+        <div class="pkg-price">IDR 25.000.000</div>
+        <div class="pkg-price-note">Full commercial use<br>Billboard · Print · Digital · Social</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="video-addon">
+    <div>
+      <div class="addon-tag">Add-On</div>
+      <div class="addon-title">Additional Reels</div>
+      <div class="addon-desc">Video production is separate from photography. Each extra reel requires additional setup and post-production time beyond the base package.</div>
+    </div>
+    <div class="addon-right">
+      <div class="addon-price">+ IDR 3.500.000</div>
+      <div class="addon-note">per reel (30–60 sec, edited)</div>
+    </div>
+  </div>
+
+  <div class="custom-note">
+    <strong>Need something different?</strong>
+    All packages can be adjusted. Different image count, multiple locations, specific usage — send the brief and we build the right scope.
+  </div>
+</div>
+
+<!-- TOTAL -->
+<div class="total-block">
+  <div>
+    <div class="dp">
+      Down Payment 50% &nbsp;·&nbsp; <strong><!-- EDIT -->IDR [X]</strong> to confirm shoot date<br>
+      Remaining 50% &nbsp;·&nbsp; <strong><!-- EDIT -->IDR [X]</strong> upon preview approval
+    </div>
+  </div>
+  <div>
+    <div class="total-label">Selected Package Total</div>
+    <div class="total-amount"><!-- EDIT -->IDR [Total]</div>
+    <div class="total-tax">PPh 23 (2.5%) deducted by client if applicable</div>
+  </div>
+</div>
+
+<!-- PROCESS + TERMS -->
+<div class="section">
+  <div class="section-eyebrow">How We Work</div>
+  <div class="section-title">Process &amp; Payment</div>
+  <div class="process-text" style="margin-bottom:28px;">
+    <strong>01 Brief &amp; Proposal</strong> — Scope confirmed, proposal sent.<br>
+    <strong>02 Down Payment</strong> — 50% locks your shoot date and initiates production.<br>
+    <strong>03 Brainstorm</strong> — Shot list and creative direction session after DP received.<br>
+    <strong>04 Shoot &amp; Deliver</strong> — Production day, preview selection, final delivery after remaining 50%.
+  </div>
+
+  <div class="terms-row">
+    <div>
+      <div class="terms-title">Payment Terms</div>
+      <ul class="terms-list">
+        <li>Scope and usage as described only. Additions invoiced separately.</li>
+        <li>50% down payment required to confirm shoot date.</li>
+        <li>Remaining 50% due on preview approval before final files released.</li>
+        <li>Brainstorm scheduled after down payment received.</li>
+        <li>Proposal valid 14 days from issue date.</li>
+      </ul>
+    </div>
+    <div>
+      <div class="terms-title">Bank Transfer</div>
+      <div class="bank-row"><span class="bk">Bank</span><span class="bv">BCA</span></div>
+      <div class="bank-row"><span class="bk">Account No.</span><span class="bv">6130151190</span></div>
+      <div class="bank-row"><span class="bk">Account Name</span><span class="bv">Arief Budiatna Putra S.</span></div>
+      <div class="bank-row"><span class="bk">Reference</span><span class="bv"><!-- EDIT -->[Client] [Month] 2026</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="fn">Arief Budiatna</div>
+    <div class="fc">+62 896 8866 8573 · Denpasar, Bali · behance.net/ariefbudiatna</div>
+  </div>
+  <div class="footer-right">Thank you for your trust<br><!-- EDIT -->May 2026</div>
+</footer>
+<div class="accent-bar"></div>
+</div>
+</body>
+</html>
