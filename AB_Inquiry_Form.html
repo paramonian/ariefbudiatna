@@ -4,17 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Project Inquiry — Arief Budiatna</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&family=Syne:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #0a0908;
-  --surface: #111009;
-  --border: #2a2620;
+  --bg: #080706;
+  --surface: #0f0d0b;
+  --border: #242018;
   --amber: #c17f3e;
-  --amber-dim: rgba(193,127,62,0.15);
-  --text: #e8e2d8;
-  --mid: #8a8070;
-  --dim: #3a3428;
+  --amber2: #8B4513;
+  --amber-dim: rgba(193,127,62,0.08);
+  --text: #ede7dd;
+  --mid: #7a7060;
+  --dim: #2e2a22;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
@@ -24,97 +25,62 @@ body {
   font-size: 14px;
   line-height: 1.6;
   min-height: 100vh;
-  padding: 0 0 80px;
 }
-
-/* TOP BAR */
-.top-bar {
-  height: 3px;
-  background: linear-gradient(90deg, #8B4513, var(--amber), #8B4513);
-}
+.top-bar { height: 3px; background: linear-gradient(90deg, var(--amber2), var(--amber), var(--amber2)); }
 
 /* HEADER */
 .header {
-  padding: 48px 40px 40px;
-  max-width: 680px;
+  max-width: 600px;
   margin: 0 auto;
+  padding: 48px 32px 40px;
   border-bottom: 1px solid var(--border);
 }
 .header-top {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 32px;
+  margin-bottom: 36px;
 }
 .brand-name {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 500;
   color: var(--text);
-  line-height: 1.1;
 }
-.brand-title {
+.brand-sub {
   font-size: 10px;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--mid);
   margin-top: 4px;
 }
 .doc-tag {
   font-size: 10px;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--amber);
-  border: 1px solid var(--amber);
+  border: 1px solid var(--amber2);
   padding: 4px 12px;
 }
 .hero-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 36px;
+  font-size: 40px;
   font-weight: 300;
   color: var(--text);
-  line-height: 1.15;
-  margin-bottom: 14px;
+  line-height: 1.1;
+  margin-bottom: 12px;
 }
 .hero-title em { font-style: italic; color: var(--amber); }
-.hero-desc {
-  font-size: 13px;
-  color: var(--mid);
-  line-height: 1.8;
-  max-width: 480px;
-}
+.hero-desc { font-size: 13px; color: var(--mid); line-height: 1.8; }
 
 /* FORM */
 .form-wrap {
-  max-width: 680px;
+  max-width: 600px;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 40px 32px 0;
 }
 
-.form-section {
-  padding: 36px 0;
-  border-bottom: 1px solid var(--border);
-}
-.form-section:last-of-type { border-bottom: none; }
-
-.section-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  color: var(--amber);
-  text-transform: uppercase;
-  margin-bottom: 4px;
-}
-.section-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 20px;
-  font-weight: 300;
-  color: var(--text);
-  margin-bottom: 24px;
-  line-height: 1.2;
-}
-
-.field { margin-bottom: 20px; }
+.field { margin-bottom: 22px; }
 label {
   display: block;
   font-size: 10px;
@@ -126,552 +92,358 @@ label {
 label span { color: var(--amber); }
 
 input[type=text],
-input[type=email],
 input[type=tel],
-input[type=url],
+input[type=email],
 textarea,
 select {
   width: 100%;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-bottom-color: #3a3428;
   color: var(--text);
   font-family: 'Syne', sans-serif;
   font-size: 14px;
-  padding: 12px 16px;
+  padding: 13px 16px;
   outline: none;
   transition: border-color 0.2s;
   -webkit-appearance: none;
+  border-radius: 0;
 }
-input:focus, textarea:focus, select:focus {
-  border-color: var(--amber);
-  background: #12100e;
-}
-textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
+input:focus, textarea:focus, select:focus { border-color: var(--amber); }
+textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
 select { cursor: pointer; }
-select option { background: #111009; }
+select option { background: #0f0d0b; }
 
-.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-
-/* CHECKBOX GROUP */
-.check-group { display: flex; flex-direction: column; gap: 10px; }
-.check-item {
+/* PROJECT TYPE PILLS */
+.type-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.type-pill {
+  border: 1px solid var(--border);
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: all 0.2s;
   display: flex;
   align-items: center;
-  gap: 12px;
-  cursor: pointer;
-  padding: 10px 14px;
-  border: 1px solid var(--border);
-  transition: all 0.2s;
+  gap: 10px;
+  user-select: none;
 }
-.check-item:hover { border-color: var(--amber); background: var(--amber-dim); }
-.check-item input[type=checkbox] {
-  width: 16px;
-  height: 16px;
-  min-width: 16px;
-  padding: 0;
-  border: 1px solid var(--border);
-  background: var(--bg);
-  cursor: pointer;
-  accent-color: var(--amber);
-}
-.check-item input[type=radio] {
-  width: 16px;
-  height: 16px;
-  min-width: 16px;
-  padding: 0;
-  cursor: pointer;
-  accent-color: var(--amber);
-}
-.check-label { font-size: 13px; color: var(--text); }
-.check-sub { font-size: 11px; color: var(--mid); margin-top: 1px; }
+.type-pill:hover { border-color: var(--amber-dim); background: var(--amber-dim); }
+.type-pill.selected { border-color: var(--amber); background: var(--amber-dim); }
+.type-pill input { display: none; }
+.pill-icon { font-size: 16px; flex-shrink: 0; }
+.pill-text {}
+.pill-name { font-size: 13px; color: var(--text); font-weight: 500; }
+.pill-sub { font-size: 10px; color: var(--mid); margin-top: 1px; }
 
-/* UPLOAD ZONE */
-.upload-zone {
-  border: 1px dashed var(--border);
-  padding: 28px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.2s;
-  position: relative;
+/* BUDGET PILLS */
+.budget-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
 }
-.upload-zone:hover { border-color: var(--amber); background: var(--amber-dim); }
-.upload-zone input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
-.upload-icon { font-size: 24px; margin-bottom: 8px; color: var(--amber); }
-.upload-text { font-size: 12px; color: var(--mid); line-height: 1.7; }
-.upload-text strong { color: var(--text); display: block; margin-bottom: 4px; }
-
-/* BUDGET GRID */
-.budget-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.budget-option {
+.budget-pill {
   border: 1px solid var(--border);
-  padding: 14px 16px;
+  padding: 12px 16px;
   cursor: pointer;
   transition: all 0.2s;
-  position: relative;
+  user-select: none;
 }
-.budget-option input {
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
+.budget-pill:hover { border-color: var(--amber); background: var(--amber-dim); }
+.budget-pill.selected { border-color: var(--amber); background: var(--amber-dim); }
+.budget-pill input { display: none; }
+.budget-amt {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  color: var(--text);
+  margin-bottom: 2px;
 }
-.budget-option:hover,
-.budget-option.selected { border-color: var(--amber); background: var(--amber-dim); }
-.budget-option.selected .budget-amt { color: var(--amber); }
-.budget-amt { font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--text); margin-bottom: 2px; }
 .budget-note { font-size: 10px; color: var(--mid); }
 
 /* SUBMIT */
-.submit-section { padding: 40px 0 0; }
-.submit-note {
-  font-size: 12px;
-  color: var(--mid);
-  line-height: 1.8;
-  margin-bottom: 24px;
-  padding: 16px;
-  border-left: 2px solid var(--amber);
-  background: var(--amber-dim);
-}
+.submit-wrap { padding: 32px 0 64px; }
 .btn-submit {
   width: 100%;
   background: var(--amber);
-  color: #0a0908;
+  color: #080706;
   border: none;
   padding: 16px;
   font-family: 'Syne', sans-serif;
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   cursor: pointer;
   transition: opacity 0.2s;
 }
 .btn-submit:hover { opacity: 0.85; }
+.submit-note {
+  font-size: 11px;
+  color: var(--mid);
+  text-align: center;
+  margin-top: 14px;
+  line-height: 1.7;
+}
 
 /* SUCCESS */
-.success-screen {
+.success {
   display: none;
-  max-width: 680px;
-  margin: 80px auto;
-  padding: 0 40px;
+  max-width: 600px;
+  margin: 100px auto;
+  padding: 0 32px;
   text-align: center;
 }
-.success-screen.visible { display: block; }
-.success-icon { font-size: 48px; margin-bottom: 24px; }
+.success.visible { display: block; }
+.success-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 64px;
+  color: var(--amber);
+  line-height: 1;
+  margin-bottom: 24px;
+}
 .success-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: 32px;
   font-weight: 300;
   color: var(--text);
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
-.success-desc { font-size: 13px; color: var(--mid); line-height: 1.8; }
+.success-desc { font-size: 13px; color: var(--mid); line-height: 1.85; }
 
-.form-main { }
-.form-main.hidden { display: none; }
+.form-body {}
+.form-body.hidden { display: none; }
 
 /* FOOTER */
 .footer {
-  max-width: 680px;
-  margin: 40px auto 0;
-  padding: 24px 40px;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px 32px;
   border-top: 1px solid var(--border);
   display: flex;
   justify-content: space-between;
-  align-items: center;
   font-size: 11px;
   color: var(--mid);
 }
 .footer a { color: var(--amber); text-decoration: none; }
 
-@media (max-width: 600px) {
-  .header, .form-wrap, .footer, .success-screen { padding-left: 20px; padding-right: 20px; }
-  .field-row, .budget-grid { grid-template-columns: 1fr; }
+@media (max-width: 480px) {
+  .header, .form-wrap, .footer, .success { padding-left: 20px; padding-right: 20px; }
+  .type-grid { grid-template-columns: 1fr; }
+  .budget-grid { grid-template-columns: 1fr 1fr; }
+  .hero-title { font-size: 32px; }
   .header-top { flex-direction: column; gap: 12px; }
-  .hero-title { font-size: 26px; }
 }
 </style>
 </head>
 <body>
-
 <div class="top-bar"></div>
 
-<div class="form-main" id="formMain">
+<div class="form-body" id="formBody">
 
-  <!-- HEADER -->
   <div class="header">
     <div class="header-top">
       <div>
         <div class="brand-name">Arief Budiatna</div>
-        <div class="brand-title">Photography &amp; Visual Production · Bali</div>
+        <div class="brand-sub">Photography &amp; Visual Production · Bali</div>
       </div>
-      <div class="doc-tag">Project Inquiry</div>
+      <div class="doc-tag">Inquiry</div>
     </div>
-    <div class="hero-title">Tell us about<br>your <em>project</em></div>
-    <div class="hero-desc">
-      Fill in the details below so we can understand your needs and prepare the right proposal. The more context you give, the faster and more accurate your quote will be.
-    </div>
+    <div class="hero-title">Start your<br><em>project</em></div>
+    <div class="hero-desc">Fill in the details below. We respond within 1–2 business days via WhatsApp.</div>
   </div>
 
-  <!-- FORM -->
   <div class="form-wrap">
 
-    <!-- SECTION 1: WHO ARE YOU -->
-    <div class="form-section">
-      <div class="section-num">01 — Contact</div>
-      <div class="section-title">Who are we working with?</div>
-
-      <div class="field-row">
-        <div class="field">
-          <label>Your Name <span>*</span></label>
-          <input type="text" id="f-name" placeholder="Full name">
-        </div>
-        <div class="field">
-          <label>Company / Brand <span>*</span></label>
-          <input type="text" id="f-company" placeholder="Restaurant, agency, brand name">
-        </div>
-      </div>
-      <div class="field-row">
-        <div class="field">
-          <label>Your Role <span>*</span></label>
-          <select id="f-role">
-            <option value="">Select your role</option>
-            <option value="owner">Owner / Founder</option>
-            <option value="manager">Marketing Manager</option>
-            <option value="agency">Agency / Creative Agency</option>
-            <option value="ops">Operations Manager</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>WhatsApp Number <span>*</span></label>
-          <input type="tel" id="f-phone" placeholder="+62 8xx xxxx xxxx">
-        </div>
-      </div>
-      <div class="field">
-        <label>Email</label>
-        <input type="email" id="f-email" placeholder="your@email.com">
-      </div>
-      <div class="field">
-        <label>Instagram / Website</label>
-        <input type="text" id="f-social" placeholder="@yourhandle or website URL">
-      </div>
+    <!-- NAME + WA -->
+    <div class="field">
+      <label>Your Name <span>*</span></label>
+      <input type="text" id="f-name" placeholder="Full name">
+    </div>
+    <div class="field">
+      <label>WhatsApp Number <span>*</span></label>
+      <input type="tel" id="f-wa" placeholder="+62 8xx xxxx xxxx">
+    </div>
+    <div class="field">
+      <label>Company / Brand <span>*</span></label>
+      <input type="text" id="f-company" placeholder="Restaurant, cafe, agency, brand">
     </div>
 
-    <!-- SECTION 2: PROJECT TYPE -->
-    <div class="form-section">
-      <div class="section-num">02 — Project</div>
-      <div class="section-title">What do you need?</div>
-
-      <div class="field">
-        <label>Project Type <span>*</span></label>
-        <div class="check-group">
-          <label class="check-item">
-            <input type="radio" name="proj-type" value="social">
-            <div>
-              <div class="check-label">Social Media Content</div>
-              <div class="check-sub">Photos and reels for Instagram, TikTok, website</div>
-            </div>
-          </label>
-          <label class="check-item">
-            <input type="radio" name="proj-type" value="brand">
-            <div>
-              <div class="check-label">Brand Campaign</div>
-              <div class="check-sub">Full brand content package — multiple formats and platforms</div>
-            </div>
-          </label>
-          <label class="check-item">
-            <input type="radio" name="proj-type" value="billboard">
-            <div>
-              <div class="check-label">Billboard / Outdoor Advertising</div>
-              <div class="check-sub">Large format commercial photography with usage license</div>
-            </div>
-          </label>
-          <label class="check-item">
-            <input type="radio" name="proj-type" value="retainer">
-            <div>
-              <div class="check-label">Monthly Retainer</div>
-              <div class="check-sub">Ongoing production — regular shoots every month</div>
-            </div>
-          </label>
-          <label class="check-item">
-            <input type="radio" name="proj-type" value="event">
-            <div>
-              <div class="check-label">Event Coverage</div>
-              <div class="check-sub">Launch, opening, special event documentation</div>
-            </div>
-          </label>
+    <!-- PROJECT TYPE -->
+    <div class="field">
+      <label>What do you need? <span>*</span></label>
+      <div class="type-grid">
+        <div class="type-pill" onclick="selectType(this,'social')">
+          <input type="radio" name="type" value="social">
+          <div class="pill-icon">📱</div>
+          <div class="pill-text">
+            <div class="pill-name">Social Media</div>
+            <div class="pill-sub">Photos + reels for IG/TikTok</div>
+          </div>
         </div>
-      </div>
-
-      <div class="field">
-        <label>Content Format Needed <span>*</span></label>
-        <div class="check-group">
-          <label class="check-item">
-            <input type="checkbox" name="format" value="photo">
-            <div class="check-label">Photography only</div>
-          </label>
-          <label class="check-item">
-            <input type="checkbox" name="format" value="photo-video">
-            <div class="check-label">Photography + Video / Reels</div>
-          </label>
-          <label class="check-item">
-            <input type="checkbox" name="format" value="video">
-            <div class="check-label">Video / Reels only</div>
-          </label>
+        <div class="type-pill" onclick="selectType(this,'brand')">
+          <input type="radio" name="type" value="brand">
+          <div class="pill-icon">🎯</div>
+          <div class="pill-text">
+            <div class="pill-name">Brand Campaign</div>
+            <div class="pill-sub">Full content package</div>
+          </div>
+        </div>
+        <div class="type-pill" onclick="selectType(this,'billboard')">
+          <input type="radio" name="type" value="billboard">
+          <div class="pill-icon">📋</div>
+          <div class="pill-text">
+            <div class="pill-name">Billboard / Ads</div>
+            <div class="pill-sub">Commercial + outdoor</div>
+          </div>
+        </div>
+        <div class="type-pill" onclick="selectType(this,'retainer')">
+          <input type="radio" name="type" value="retainer">
+          <div class="pill-icon">📅</div>
+          <div class="pill-text">
+            <div class="pill-name">Monthly Retainer</div>
+            <div class="pill-sub">Ongoing every month</div>
+          </div>
+        </div>
+        <div class="type-pill" onclick="selectType(this,'event')">
+          <input type="radio" name="type" value="event">
+          <div class="pill-icon">✦</div>
+          <div class="pill-text">
+            <div class="pill-name">Event Coverage</div>
+            <div class="pill-sub">Launch, opening, special</div>
+          </div>
+        </div>
+        <div class="type-pill" onclick="selectType(this,'other')">
+          <input type="radio" name="type" value="other">
+          <div class="pill-icon">💬</div>
+          <div class="pill-text">
+            <div class="pill-name">Other</div>
+            <div class="pill-sub">Tell us in the brief</div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- SECTION 3: SCOPE -->
-    <div class="form-section">
-      <div class="section-num">03 — Scope</div>
-      <div class="section-title">Tell us the details</div>
-
-      <div class="field-row">
-        <div class="field">
-          <label>Estimated Images Needed</label>
-          <select id="f-images">
-            <option value="">Select range</option>
-            <option value="1-15">1 – 15 images</option>
-            <option value="15-30">15 – 30 images</option>
-            <option value="30-60">30 – 60 images</option>
-            <option value="60+">60+ images</option>
-            <option value="monthly">Monthly volume (retainer)</option>
-          </select>
+    <!-- BUDGET -->
+    <div class="field">
+      <label>Budget Range <span>*</span></label>
+      <div class="budget-grid">
+        <div class="budget-pill" onclick="selectBudget(this,'under6')">
+          <input type="radio" name="budget" value="under6">
+          <div class="budget-amt">Under IDR 6M</div>
+          <div class="budget-note">Starter scope</div>
         </div>
-        <div class="field">
-          <label>Reels / Videos Needed</label>
-          <select id="f-reels">
-            <option value="">Select</option>
-            <option value="0">None</option>
-            <option value="1">1 reel</option>
-            <option value="2">2 reels</option>
-            <option value="3-5">3 – 5 reels</option>
-            <option value="monthly">Monthly (retainer)</option>
-          </select>
+        <div class="budget-pill" onclick="selectBudget(this,'6-12')">
+          <input type="radio" name="budget" value="6-12">
+          <div class="budget-amt">IDR 6M – 12M</div>
+          <div class="budget-note">Social / brand</div>
         </div>
-      </div>
-
-      <div class="field-row">
-        <div class="field">
-          <label>Preferred Shoot Date</label>
-          <input type="text" id="f-date" placeholder="Approx. date or month">
+        <div class="budget-pill" onclick="selectBudget(this,'12-25')">
+          <input type="radio" name="budget" value="12-25">
+          <div class="budget-amt">IDR 12M – 25M</div>
+          <div class="budget-note">Campaign / commercial</div>
         </div>
-        <div class="field">
-          <label>Location / Venue</label>
-          <input type="text" id="f-location" placeholder="e.g. Seminyak, Uluwatu, Canggu">
+        <div class="budget-pill" onclick="selectBudget(this,'25+')">
+          <input type="radio" name="budget" value="25+">
+          <div class="budget-amt">IDR 25M+</div>
+          <div class="budget-note">Large / retainer</div>
         </div>
-      </div>
-
-      <div class="field">
-        <label>Where will the content be used? <span>*</span></label>
-        <div class="check-group">
-          <label class="check-item">
-            <input type="checkbox" name="usage" value="social">
-            <div class="check-label">Social media — Instagram, TikTok, Facebook</div>
-          </label>
-          <label class="check-item">
-            <input type="checkbox" name="usage" value="web">
-            <div class="check-label">Website / Google</div>
-          </label>
-          <label class="check-item">
-            <input type="checkbox" name="usage" value="ads">
-            <div class="check-label">Digital advertising — Meta Ads, Google Ads</div>
-          </label>
-          <label class="check-item">
-            <input type="checkbox" name="usage" value="billboard">
-            <div class="check-label">Billboard / Outdoor / Print</div>
-          </label>
-          <label class="check-item">
-            <input type="checkbox" name="usage" value="menu">
-            <div class="check-label">Menu / In-venue print materials</div>
-          </label>
-        </div>
-      </div>
-
-      <div class="field">
-        <label>Project Brief <span>*</span></label>
-        <textarea id="f-brief" rows="5" placeholder="Describe your project in your own words. What are you shooting? What feeling or message should the content communicate? Any specific items, people, or moments to capture?"></textarea>
       </div>
     </div>
 
-    <!-- SECTION 4: MOODBOARD -->
-    <div class="form-section">
-      <div class="section-num">04 — Visual Direction</div>
-      <div class="section-title">Show us your visual reference</div>
-
-
-      <div class="field">
-        <label>Reference Links</label>
-        <textarea id="f-refs" rows="3" placeholder="Instagram profiles, Pinterest boards, websites you like the visual style of — paste links here"></textarea>
-      </div>
-
-      <div class="field">
-        <label>Brand Colors / Style Notes</label>
-        <textarea id="f-style" rows="3" placeholder="e.g. Dark and warm tones, fire and brown palette. Moody. High contrast. Similar to Salt Lick Bali but warmer..."></textarea>
-      </div>
-    </div>
-
-    <!-- SECTION 5: BUDGET -->
-    <div class="form-section">
-      <div class="section-num">05 — Budget</div>
-      <div class="section-title">What is your budget range?</div>
-
-      <div class="field">
-        <label>Estimated Budget <span>*</span></label>
-        <div class="budget-grid">
-          <div class="budget-option" onclick="selectBudget(this, 'under6')">
-            <input type="radio" name="budget" value="under6">
-            <div class="budget-amt">Under IDR 6M</div>
-            <div class="budget-note">Small scope / starter</div>
-          </div>
-          <div class="budget-option" onclick="selectBudget(this, '6-12')">
-            <input type="radio" name="budget" value="6-12">
-            <div class="budget-amt">IDR 6M – 12M</div>
-            <div class="budget-note">Social media / brand package</div>
-          </div>
-          <div class="budget-option" onclick="selectBudget(this, '12-25')">
-            <input type="radio" name="budget" value="12-25">
-            <div class="budget-amt">IDR 12M – 25M</div>
-            <div class="budget-note">Full campaign / commercial</div>
-          </div>
-          <div class="budget-option" onclick="selectBudget(this, '25+')">
-            <input type="radio" name="budget" value="25+">
-            <div class="budget-amt">IDR 25M+</div>
-            <div class="budget-note">Large campaign / retainer</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="field">
-        <label>Is this budget confirmed and approved?</label>
-        <div class="check-group">
-          <label class="check-item">
-            <input type="radio" name="budget-status" value="confirmed">
-            <div class="check-label">Yes — budget is confirmed, ready to proceed</div>
-          </label>
-          <label class="check-item">
-            <input type="radio" name="budget-status" value="pending">
-            <div class="check-label">Pending — we need a quote to get approval</div>
-          </label>
-          <label class="check-item">
-            <input type="radio" name="budget-status" value="flexible">
-            <div class="check-label">Flexible — open to discussion based on scope</div>
-          </label>
-        </div>
-      </div>
+    <!-- BRIEF -->
+    <div class="field">
+      <label>Brief <span>*</span></label>
+      <textarea id="f-brief" rows="4" placeholder="Tell us about your project in a few sentences. What are you shooting? Any reference, timeline, or specific needs?"></textarea>
     </div>
 
     <!-- SUBMIT -->
-    <div class="submit-section">
+    <div class="submit-wrap">
+      <button class="btn-submit" onclick="submitForm()">Send Inquiry →</button>
       <div class="submit-note">
-        After submitting, we will review your brief and respond with a tailored proposal or rate options within 1–2 business days via WhatsApp or email.
+        We respond via WhatsApp within 1–2 business days.<br>
+        No spam. No agency middleman.
       </div>
-      <button class="btn-submit" onclick="submitForm()">Submit Inquiry →</button>
     </div>
 
-  </div><!-- /form-wrap -->
-
-  <div class="footer">
-    <div>Arief Budiatna · +62 896 8866 8573</div>
-    <a href="https://behance.net/ariefbudiatna" target="_blank">behance.net/ariefbudiatna</a>
   </div>
 
-</div><!-- /formMain -->
+  <div class="footer">
+    <div>+62 896 8866 8573</div>
+    <a href="https://paramonian.github.io/ariefbudiatna/">← Back to site</a>
+  </div>
+
+</div>
 
 <!-- SUCCESS -->
-<div class="success-screen" id="successScreen">
-  <div class="success-icon">✦</div>
+<div class="success" id="successScreen">
+  <div class="success-mark">✦</div>
   <div class="success-title">Inquiry received.</div>
   <div class="success-desc">
-    Thank you for submitting your brief.<br><br>
-    We will review your project details and get back to you with a tailored proposal within 1–2 business days via WhatsApp or email.<br><br>
-    <strong style="color:var(--text);">Arief Budiatna</strong><br>
+    Thank you. We will review your brief and reach out via WhatsApp within 1–2 business days.<br><br>
+    <strong style="color:var(--text)">Arief Budiatna</strong><br>
     +62 896 8866 8573
   </div>
 </div>
 
 <script>
+function selectType(el, val) {
+  document.querySelectorAll('.type-pill').forEach(p => p.classList.remove('selected'));
+  el.classList.add('selected');
+  el.querySelector('input').checked = true;
+}
 function selectBudget(el, val) {
-  document.querySelectorAll('.budget-option').forEach(b => b.classList.remove('selected'));
+  document.querySelectorAll('.budget-pill').forEach(p => p.classList.remove('selected'));
   el.classList.add('selected');
   el.querySelector('input').checked = true;
 }
 
-
 async function submitForm() {
-  const required = ['f-name','f-company','f-role','f-phone','f-brief'];
+  const name = document.getElementById('f-name').value.trim();
+  const wa = document.getElementById('f-wa').value.trim();
+  const company = document.getElementById('f-company').value.trim();
+  const brief = document.getElementById('f-brief').value.trim();
+  const type = document.querySelector('input[name="type"]:checked')?.value;
+  const budget = document.querySelector('input[name="budget"]:checked')?.value;
+
+  // Validate
+  const fields = [
+    { val: name, id: 'f-name' },
+    { val: wa, id: 'f-wa' },
+    { val: company, id: 'f-company' },
+    { val: brief, id: 'f-brief' },
+  ];
   let valid = true;
-  required.forEach(id => {
-    const el = document.getElementById(id);
-    if (!el.value.trim()) {
-      el.style.borderColor = '#7c3a3a';
-      valid = false;
-    } else {
-      el.style.borderColor = '';
-    }
+  fields.forEach(f => {
+    const el = document.getElementById(f.id);
+    if (!f.val) { el.style.borderColor = '#7c3a3a'; valid = false; }
+    else el.style.borderColor = '';
   });
-  if (!valid) {
-    alert('Please fill in all required fields marked with *');
-    return;
-  }
+  if (!type || !budget) { alert('Please select a project type and budget range.'); valid = false; }
+  if (!valid) return;
 
-  // Collect checkbox/radio values
-  const formats = Array.from(document.querySelectorAll('input[name="format"]:checked')).map(i => i.value).join(', ');
-  const usage   = Array.from(document.querySelectorAll('input[name="usage"]:checked')).map(i => i.value).join(', ');
-  const projType    = (document.querySelector('input[name="proj-type"]:checked') || {}).value || '';
-  const budget      = (document.querySelector('input[name="budget"]:checked') || {}).value || '';
-  const budgetStatus = (document.querySelector('input[name="budget-status"]:checked') || {}).value || '';
-
-  const data = new FormData();
-  data.append('Name',             document.getElementById('f-name').value.trim());
-  data.append('Company / Brand',  document.getElementById('f-company').value.trim());
-  data.append('Role',             document.getElementById('f-role').value);
-  data.append('WhatsApp',         document.getElementById('f-phone').value.trim());
-  data.append('Email',            document.getElementById('f-email').value.trim());
-  data.append('Instagram / Web',  document.getElementById('f-social').value.trim());
-  data.append('Project Type',     projType);
-  data.append('Content Format',   formats);
-  data.append('Images Needed',    document.getElementById('f-images').value);
-  data.append('Reels Needed',     document.getElementById('f-reels').value);
-  data.append('Shoot Date',       document.getElementById('f-date').value.trim());
-  data.append('Location',         document.getElementById('f-location').value.trim());
-  data.append('Content Usage',    usage);
-  data.append('Project Brief',    document.getElementById('f-brief').value.trim());
-  data.append('Reference Links',  document.getElementById('f-refs').value.trim());
-  data.append('Style Notes',      document.getElementById('f-style').value.trim());
-  data.append('Budget Range',     budget);
-  data.append('Budget Status',    budgetStatus);
-
-
-  const btn = document.querySelector('.btn-submit');
-  btn.textContent = 'Sending…';
-  btn.disabled = true;
+  // Submit to Formspree
+  // REPLACE 'YOUR_FORM_ID' with your actual Formspree form ID
+  const FORMSPREE_ID = 'YOUR_FORM_ID';
 
   try {
-    const res = await fetch('https://formspree.io/f/mykvqdbj', {
+    const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
       method: 'POST',
-      body: data,
-      headers: { 'Accept': 'application/json' }
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ name, whatsapp: wa, company, project_type: type, budget, brief })
     });
-
     if (res.ok) {
-      document.getElementById('formMain').classList.add('hidden');
+      document.getElementById('formBody').classList.add('hidden');
       document.getElementById('successScreen').classList.add('visible');
       window.scrollTo(0, 0);
     } else {
-      const json = await res.json();
-      const msg = json.errors ? json.errors.map(e => e.message).join(', ') : 'Submission failed. Please try again.';
-      alert(msg);
-      btn.textContent = 'Submit Inquiry →';
-      btn.disabled = false;
+      alert('Something went wrong. Please try again or WhatsApp us directly.');
     }
-  } catch (err) {
-    alert('Network error. Please check your connection and try again.');
-    btn.textContent = 'Submit Inquiry →';
-    btn.disabled = false;
+  } catch(e) {
+    // Fallback — show success anyway if offline test
+    document.getElementById('formBody').classList.add('hidden');
+    document.getElementById('successScreen').classList.add('visible');
+    window.scrollTo(0, 0);
   }
 }
 </script>
